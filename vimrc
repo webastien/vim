@@ -1,5 +1,7 @@
 " Forget old versions
 set nocompatible
+" To prevent swapfiles to be sent by FTP, bring in archives, ... Fix an uniq dir to keep them
+set dir=~/.vim/swapfiles
 " Display incomplete command (bottom right)
 set showcmd
 " Diff options
@@ -55,6 +57,13 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+" Customize syntax for Drupal files not recognized by default as PHP files
+autocmd BufRead,BufNewFile *.install set filetype=php
+autocmd BufRead,BufNewFile *.module  set filetype=php
+autocmd BufRead,BufNewFile *.test    set filetype=php
+autocmd BufRead,BufNewFile *.engine  set filetype=php
+autocmd BufRead,BufNewFile *.profile set filetype=php
+autocmd BufRead,BufNewFile *.view    set filetype=php
 " Filetypes managing
 autocmd filetype html       set filetype=xhtml
 autocmd filetype xhtml      set omnifunc=htmlcomplete#CompleteTags
@@ -62,11 +71,8 @@ autocmd filetype css        set omnifunc=csscomplete#CompleteCSS
 autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd filetype php        set omnifunc=phpcomplete#CompletePHP
 autocmd filetype xml        set omnifunc=xmlcomplete#CompleteTags
-" Customize syntax for Drupal files not recognized by default as PHP files
-autocmd BufRead,BufNewFile *.install set filetype=php
-autocmd BufRead,BufNewFile *.module  set filetype=php
-autocmd BufRead,BufNewFile *.test    set filetype=php
-autocmd BufRead,BufNewFile *.engine  set filetype=php
+" Automatically update tags of a saved file
+autocmd BufWritePost *.install,*.module,*.test,*.engine,*.profile,*.view call UpdateFileTags()
 " Manage folding
 function SimpleFoldText()
   let lines = v:foldend - v:foldstart + 1
@@ -154,7 +160,7 @@ let php_parent_error_open=1
 let php_sql_query=1
 " Taglist setting
 let tlist_php_settings='php;c:class;f:function'
-let Tlist_Ctags_Cmd='/usr/bin/ctags'
+let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Auto_Open=0
 let Tlist_Auto_Update=1
@@ -180,11 +186,14 @@ let Tlist_Use_SingleClick=1
 let Tlist_WinHeight=100
 let Tlist_WinWidth=35
 " Simplecommenter settings
-autocmd filetype php    :setlocal commentstring=//%s
-autocmd filetype conf   :setlocal commentstring=#%s
-autocmd filetype apache :setlocal commentstring=#%s
-autocmd filetype vim    :setlocal commentstring=\"%s
-autocmd filetype dosini :setlocal commentstring=\;%s
+autocmd filetype php        :setlocal commentstring=//%s
+autocmd filetype javascript :setlocal commentstring=//%s
+autocmd filetype conf       :setlocal commentstring=#%s
+autocmd filetype apache     :setlocal commentstring=#%s
+autocmd filetype sh         :setlocal commentstring=#%s
+autocmd filetype vim        :setlocal commentstring=\"%s
+autocmd filetype dosini     :setlocal commentstring=\;%s
+autocmd filetype css        :setlocal commentstring=/*%s,%s*/
 " Autopreview settings
 let g:AutoPreview_enabled=0
 let g:AutoPreview_allowed_filetypes=['php', 'c', 'cpp', 'java']
@@ -370,7 +379,7 @@ map <silent> <F3> :call OpenDeclaration()<CR>
 " Map quick return last editing position
 map <S-q> '.
 " Map ctags update on F5
-let workspacedir = '~/Workspace'
+let workspacedir = '~/Sites'
 function UpdateCtags()
   if &ft != 'php'
     echohl WarningMsg | echo "This is not a PHP file!" | echohl None
@@ -411,6 +420,24 @@ function UpdateCtags()
   return
 endfunction
 nnoremap <silent> <F5> :call UpdateCtags()<CR>
+" Function to automatically update project's tags by adding the current file's tags (see autocmd BufWritePre)
+function UpdateFileTags()
+  if &ft == 'php' && stridx(getcwd(), fnamemodify(g:workspacedir, ':p')) != -1
+    let tagfiles = tagfiles()
+    if len(tagfiles) == 1
+      let tagfile = get(tagfiles, 0)
+      if filewritable(tagfile)
+        let tagdir = fnamemodify(tagfile, ':p:h')
+        if isdirectory(tagdir) && filewritable(tagdir) == 2
+          let command  = 'ctags --langmap=php:.engine.inc.module.theme.php.install --php-kinds=fcdi'
+          let command .=      ' --languages=php --tag-relative=yes --totals=yes'
+          let command .=      ' -f '. tagdir .'/.tags -u '. expand('%:p')
+          let result   = system(command)
+        endif
+      endif
+    endif
+  endif
+endfunction
 " Map custom PHP search and its navigation on CTRL-F (start search) and F6/F7 (show next/previous result)
 function PHPSearch()
   call inputsave()
@@ -453,6 +480,8 @@ map <S-K> <PageUp>
 map <S-J> <PageDown>
 map <S-H> 0
 map <S-L> $
+" Remap the "à" key to work as "0" on qwerty keyboards
+map à 0
 " Unmap keyboard keys in standard mode
 map <Up>    <Esc>
 map <Right> <Esc>
@@ -460,58 +489,26 @@ map <Down>  <Esc>
 map <Left>  <Esc>
 " Enable 256 colors scheme
 set t_Co=256
-" Change colors scheme
-colors peachpuff
+" Change the colors scheme (then, all color definitions will customize more)
+colors jellybeans
+" Colorize default lines (remove the background color from jellybeans scheme)
+hi Normal       cterm=NONE      ctermfg=188  ctermbg=NONE
 " Colorize line number column
-hi LineNr            cterm=NONE      ctermfg=236  ctermbg=NONE
+hi LineNr       cterm=NONE      ctermfg=236  ctermbg=NONE
 " Colorize visual selection
-hi Visual            cterm=reverse   ctermfg=NONE ctermbg=NONE
-" Colorize invisible characters
-hi Ignore            cterm=NONE      ctermfg=16   ctermbg=NONE
-hi NonText           cterm=NONE      ctermfg=235  ctermbg=NONE
-hi SpecialKey        cterm=NONE      ctermfg=235  ctermbg=NONE
+hi Visual       cterm=reverse   ctermfg=NONE ctermbg=NONE
 " Colorize folded elements
-hi Folded            cterm=bold      ctermfg=15   ctermbg=NONE
-hi FoldColumn        cterm=NONE      ctermfg=220  ctermbg=NONE
-" Colorize current line (and current column even if not activated by default)
-hi CursorLine        cterm=NONE      ctermfg=NONE ctermbg=233
-hi CursorColumn      cterm=NONE      ctermfg=NONE ctermbg=232
-" Colorize search term
-hi IncSearch         cterm=reverse   ctermfg=NONE ctermbg=NONE
-hi Search            cterm=underline ctermfg=NONE ctermbg=NONE
-" Colorize matching brackets
-hi MatchParen        cterm=reverse   ctermfg=NONE ctermbg=NONE
-" Colorize popup menus (like omnicompletion)
-hi Pmenu             cterm=NONE      ctermfg=15   ctermbg=233
-hi PmenuSel          cterm=bold      ctermfg=220  ctermbg=NONE
-hi PmenuSbar         cterm=bold      ctermfg=236  ctermbg=236
-hi PmenuThumb        cterm=bold      ctermfg=236  ctermbg=220
-" Colorize tags list
-hi MyTagListTagName  cterm=bold      ctermfg=15   ctermbg=233
-hi MyTagListFileName cterm=NONE      ctermfg=4    ctermbg=NONE
-" Colorize sign column (Used to mark errors by syntastic plugin)
-hi SignColumn        cterm=NONE      ctermfg=NONE ctermbg=NONE
-" Colorize error messages
-hi ErrorMsg          cterm=bold      ctermfg=220  ctermbg=52
-hi WarningMsg        cterm=bold      ctermfg=52   ctermbg=220
-" Colorize mode message
-hi ModeMsg           cterm=bold      ctermfg=220  ctermbg=52
-" Colorize vertical separators
-hi VertSplit         cterm=NONE      ctermfg=235  ctermbg=NONE
+hi Folded       cterm=bold      ctermfg=15   ctermbg=NONE
+hi FoldColumn   cterm=NONE      ctermfg=220  ctermbg=NONE
+" Colorize current line
+hi CursorLine   cterm=NONE      ctermfg=NONE ctermbg=238
 " Colorize status line
-hi StatusLine        cterm=bold      ctermfg=16   ctermbg=46
-hi StatusLineNC      cterm=NONE      ctermfg=16   ctermbg=28
+hi StatusLine   cterm=bold      ctermfg=16   ctermbg=46
+hi StatusLineNC cterm=NONE      ctermfg=16   ctermbg=28
 " Colorize tabs bar
-hi TabLine           cterm=NONE      ctermfg=16   ctermbg=28
-hi TabLineSel        cterm=bold      ctermfg=16   ctermbg=46
-hi TabLineFill       cterm=underline ctermfg=NONE ctermbg=NONE
+hi TabLine      cterm=NONE      ctermfg=16   ctermbg=28
+hi TabLineSel   cterm=bold      ctermfg=16   ctermbg=46
+hi TabLineFill  cterm=underline ctermfg=NONE ctermbg=NONE
 " Colorize 'To do' markers
-hi Todo              cterm=bold      ctermfg=220  ctermbg=52
-" Colorize differences when comparing files
-hi DiffAdd           cterm=NONE      ctermfg=15   ctermbg=21
-hi DiffChange        cterm=NONE      ctermfg=16   ctermbg=136
-hi DiffDelete        cterm=NONE      ctermfg=88   ctermbg=52
-hi DiffText          cterm=bold      ctermfg=220  ctermbg=52
-" Colorize PHP language
-hi phpComment        cterm=NONE      ctermfg=8    ctermbg=NONE
+hi Todo         cterm=bold      ctermfg=220  ctermbg=52
 
