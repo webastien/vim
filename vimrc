@@ -501,7 +501,7 @@ hi Visual       cterm=reverse   ctermfg=NONE ctermbg=NONE
 hi Folded       cterm=bold      ctermfg=15   ctermbg=NONE
 hi FoldColumn   cterm=NONE      ctermfg=220  ctermbg=NONE
 " Colorize current line
-hi CursorLine   cterm=NONE      ctermfg=NONE ctermbg=238
+hi CursorLine   cterm=bold      ctermfg=NONE ctermbg=4
 " Colorize status line
 hi StatusLine   cterm=bold      ctermfg=16   ctermbg=46
 hi StatusLineNC cterm=NONE      ctermfg=16   ctermbg=28
