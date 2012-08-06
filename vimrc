@@ -431,7 +431,7 @@ function UpdateFileTags()
         if isdirectory(tagdir) && filewritable(tagdir) == 2
           let command  = 'ctags --langmap=php:.engine.inc.module.theme.php.install --php-kinds=fcdi'
           let command .=      ' --languages=php --tag-relative=yes --totals=yes'
-          let command .=      ' -f '. tagdir .'/.tags -u '. expand('%:p')
+          let command .=      ' -f '. tagdir .'/.tags -a '. expand('%:p')
           let result   = system(command)
         endif
       endif
