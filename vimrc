@@ -160,7 +160,7 @@ let php_parent_error_open=1
 let php_sql_query=1
 " Taglist setting
 let tlist_php_settings='php;c:class;f:function'
-let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
+let Tlist_Ctags_Cmd=substitute(system('which ctags'), "\n", '', '')
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Auto_Open=0
 let Tlist_Auto_Update=1
@@ -482,11 +482,33 @@ map <S-H> 0
 map <S-L> $
 " Remap the "à" key to work as "0" on qwerty keyboards
 map à 0
-" Unmap keyboard keys in standard mode
-map <Up>    <Esc>
-map <Right> <Esc>
-map <Down>  <Esc>
-map <Left>  <Esc>
+" Map alignment + sort on '+' key for CSS properties
+vmap + :SCSSA<CR>gv:!sort<CR>
+" Remap keyboard directional keys
+map <Left>  <C-H>
+map <Right> <C-L>
+nnoremap <silent> <Down> :tabnext<CR>
+nnoremap <silent> <Up>   :tabprevious<CR>
+" Open VIm help pages in a full size window
+command -nargs=1 -complete=help Help :call s:Help(<q-args>)
+function s:Help(subject)
+  if &ft == 'help'
+    exec 'help '. a:subject
+  else
+    if &ft != ''
+      exec 'tabnew'
+    endif
+
+    exec 'help '. a:subject
+    exec 'wincmd k'
+    exec 'quit'
+  endif
+endfunction
+cabbrev h    <c-r>= ((getcmdtype() == ':' && getcmdpos() == 1)? 'Help': 'h')<CR>
+cabbrev help <c-r>= ((getcmdtype() == ':' && getcmdpos() == 1)? 'Help': 'help')<CR>
+" Create an abbreviation for Drupal plugin commands
+cabbrev ed <c-r>= ((getcmdtype() == ':' && getcmdpos() == 1)? 'EditDrupal': 'ed')<CR>
+cabbrev ho <c-r>= ((getcmdtype() == ':' && getcmdpos() == 1)? 'Hook':       'ho')<CR>
 " Enable 256 colors scheme
 set t_Co=256
 " Change the colors scheme (then, all color definitions will customize more)

@@ -27,7 +27,7 @@
 "   :SCSSA -> Align CSS properties currently selected
 "
 
-if exists ("loaded_SCSSA") || !exists(":filetype")
+if exists ('loaded_SCSSA') || !exists(':filetype')
   finish
 endif
 

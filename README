@@ -8,10 +8,9 @@ To use VIm with my config and plugins:
 
 1. Install vim (default vi is not sufficient)
 2. Install ctags (required for taglist and some of my own features)
-3. Change "Tlist_Ctags_Cmd" by the result of "which ctags" shell command
-4. Change "workspacedir" to your own projects directory
-5. Copy vimrc to ~/.vimrc
-6. Copy vim to ~/.vim
+3. Copy vim to ~/.vim
+4. Copy vimrc to ~/.vimrc
+5. Edit ~/.vimrc and change "workspacedir" value to your own projects directory
 
 Main features:
 
