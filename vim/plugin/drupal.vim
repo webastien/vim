@@ -63,6 +63,8 @@
 "   {module / theme} is the (machine) name of a module or a theme,
 "   {filepath} is the path of a file, relative to this module / theme
 "
+"   You can use "/" as module argument: It will point to the Drupal root.
+"
 "   Some file are excluded from the autocomplete list.
 "   By default: *.png, *.gif, *.jpg and *.jpeg
 "   You can change which ones by adding (and adapting) this to your .vimrc:
