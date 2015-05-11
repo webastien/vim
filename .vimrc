@@ -37,7 +37,7 @@ set statusline=%<%w%F\ %h%m%r%=%-10.(%l,%c%V\ \[%P\]%)        " Customize status
 set wildmenu | set wildmode=longest,list                      " Customize command completion
 set tw=170 | set wrap | set linebreak | set display=lastline  " Wrap long lines, never cut words and display its begin when everything cannot be displayed
 
-let g:tagbar_compact = 1 | let g:tagbar_autofocus = 1 | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' " Because MacOS's ctags is not 'Exuberant'
+let g:tagbar_compact = 1 | let g:tagbar_autofocus = 1 | let g:tagbar_close = 1 | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' " MacOS's ctags is not 'Exuberant'
 let g:AutoPreview_enabled=0 | set previewheight=1 | set updatetime=500 " Autopreview settings
 set shiftwidth=2 | set tabstop=2 | set softtabstop=2 | set backspace=2 | set expandtab | set autoindent | set smartindent " Never tabs, only 2 spaces
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo " Hidden suffixes
