@@ -25,8 +25,10 @@ I'm using a french azerty keyboard (just in case) and [TotalTerminal](http://tot
 * [PHP Integration for VIM](https://github.com/spf13/PIV) to... U know :-)
 * [Tagbar](http://majutsushi.github.com/tagbar/) to have an outline
 * [Autopreview](https://github.com/vim-scripts/autopreview) to quickly see functions' signature
+* [vim-less](https://github.com/groenewege/vim-less) to have LESS files highlighting
 * [vim-tabs](https://github.com/webastien/vim-tabs) to simplify tab names
 * [vim-ctags](https://github.com/webastien/vim-ctags) to manage and navigate tags
+* [vim-folding](https://github.com/webastien/vim-folding) to manage folds (much lighter than PIV's functionnality)
 
 ## Colorscheme used
 I choose [Jellybeans](https://github.com/nanotech/jellybeans.vim) with a few modifications (see the end of **.vimrc** file).
@@ -65,7 +67,6 @@ I choose [Jellybeans](https://github.com/nanotech/jellybeans.vim) with a few mod
 * **F8** Toggle file outline
 
 ## TODO
-* Write a folding plugin to have PHPdoc separated from functions (PIV do it for now and I don't like that, but it's not ready for deep configuration... And slow on big files!).
 * Better language abstraction on some things (especially vim-ctags plugin)
 * Re-do an acceptable helper module for [Drupal](https://www.drupal.org) when I will use D8 (I've started [one for D7](https://github.com/webastien/vim/blob/4b4f5c332e7576dd986da2e08a2e8b2ea7a2039f/vim/plugin/drupal.vim), but never had time to finish).
 * Same for [Symfony2](http://symfony.com) and probably other frameworks / CMS / languages if I use vim to work on them

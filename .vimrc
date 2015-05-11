@@ -1,4 +1,4 @@
-" ##  Vundle plugin initialization  ###################################################################################################### (begin) ##
+" ##  Vundle plugin initialization  #################################################################################################################
 set nocompatible | filetype off | set rtp+=~/.vim/bundle/Vundle.vim | call vundle#begin() | Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'     " Check syntax errors
 Plugin 'scrooloose/nerdcommenter' " Easily toggle comments
@@ -6,16 +6,18 @@ Plugin 'nanotech/jellybeans.vim'  " Nice colorscheme
 Plugin 'spf13/PIV'                " PHP integration for VIm
 Plugin 'majutsushi/tagbar'        " Provide an outline base on ctags
 Plugin 'vim-scripts/autopreview'  " Autopreview functions' signature
+Plugin 'groenewege/vim-less'      " LESS css support
 Plugin 'webastien/vim-tabs'       " Display only filename + works with several file per tab
 Plugin 'webastien/vim-ctags'      " Ctags management
+Plugin 'webastien/vim-folding'    " Light module to manage folds
 call vundle#end() | filetype plugin indent on
 
-" ##  VIm options  ####################################################################################################################### (begin) ##
+" ##  VIm options  ##################################################################################################################################
 syntax  enable                     " Enable syntax highlighting
 autocmd BufWritePre * :%s/\s\+$//e " Always remove trailing whitespace on save
 
+let g:DisableAutoPHPFolding = 1 | let php_folding = 0         " Disable PIV's folding
 let NERDSpaceDelims=1                                         " Add space around NERDcommenter's commented lines
-" let g:DisableAutoPHPFolding = 1 | let php_folding = 0         " Disable PIV's folding
 let g:syntastic_auto_loc_list=1                               " Syntastic plugin will show the error
 set autochdir                                                 " Use relative path from the current file
 set completeopt=menu,preview,longest                          " Omnicompletion settings
@@ -33,14 +35,14 @@ set showcmd                                                   " Display incomple
 set splitbelow                                                " Display help and preview window at the bottom
 set statusline=%<%w%F\ %h%m%r%=%-10.(%l,%c%V\ \[%P\]%)        " Customize statusline to display full filepath
 set wildmenu | set wildmode=longest,list                      " Customize command completion
-set wrap | set linebreak | set display=lastline               " Wrap long lines, never cut words and display its begin when everything cannot be displayed
+set tw=170 | set wrap | set linebreak | set display=lastline  " Wrap long lines, never cut words and display its begin when everything cannot be displayed
 
 let g:tagbar_compact = 1 | let g:tagbar_autofocus = 1 | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' " Because MacOS's ctags is not 'Exuberant'
 let g:AutoPreview_enabled=0 | set previewheight=1 | set updatetime=500 " Autopreview settings
 set shiftwidth=2 | set tabstop=2 | set softtabstop=2 | set backspace=2 | set expandtab | set autoindent | set smartindent " Never tabs, only 2 spaces
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo " Hidden suffixes
 
-" ##  Custom tweaks  ##################################################################################################################### (begin) ##
+" ##  Custom tweaks  ################################################################################################################################
 vnoremap p "_dP " Keep the current text in memory when being pasted
 " Apply last editing position, unfold if necessary and center the screen aroung the cursor
 set viminfo='10,\"100,:20,%,n~/.viminfo
@@ -78,7 +80,7 @@ nnoremap <silent> <F2> :AutoPreviewToggle<CR>
 " As PIV plugin use ":setlocal nowrap", re-add this option on PHP files
 autocmd FileType php :setlocal wrap
 
-" ##  Keyboard (re)mapping  #### /!\ Remember: Never add comments on the same line as a map command! ##################################### (begin) ##
+" ##  Keyboard (re)mapping  #### /!\ Remember: Never add comments on the same line as a map command! ################################################
 " Remap the "à" key to work as "0" on qwerty keyboards
 map à <Home>
 " Map quick return last editing position
@@ -116,7 +118,7 @@ nnoremap <silent> <F5> :call RebuildTags()<CR>
 " Toggle the ouline with F8
 nmap <silent> <F8> :TagbarToggle<CR>
 
-" ##  Colors customization  ############################################################################################################## (begin) ##
+" ##  Colors customization  #########################################################################################################################
 colors jellybeans
 hi CursorLine   cterm=bold      ctermfg=NONE ctermbg=4    " Current line
 hi FoldColumn   cterm=NONE      ctermfg=220  ctermbg=NONE " Fold marks column
