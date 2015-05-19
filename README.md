@@ -26,6 +26,7 @@ I'm using a french azerty keyboard (just in case) and [TotalTerminal](http://tot
 * [Tagbar](http://majutsushi.github.com/tagbar/) to have an outline
 * [Autopreview](https://github.com/vim-scripts/autopreview) to quickly see functions' signature
 * [vim-less](https://github.com/groenewege/vim-less) to have LESS files highlighting
+* [Tabular](https://github.com/godlygeek/tabular) for easy alignments (on '=' for example)
 * [vim-tabs](https://github.com/webastien/vim-tabs) to simplify tab names
 * [vim-ctags](https://github.com/webastien/vim-ctags) to manage and navigate tags
 * [vim-folding](https://github.com/webastien/vim-folding) to manage folds (much lighter than PIV's functionnality)
@@ -65,6 +66,7 @@ I choose [Jellybeans](https://github.com/nanotech/jellybeans.vim) with a few mod
 * **F3** Jump to declaration of the function / class / ... under the cursor
 * **F5** Create / Refresh tags list of the project
 * **F8** Toggle file outline
+* **+** Auto align with tabular (detect ":" or "=" context)
 
 ## TODO
 * Better language abstraction on some things (especially vim-ctags plugin)

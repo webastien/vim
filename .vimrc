@@ -7,6 +7,7 @@ Plugin 'spf13/PIV'                " PHP integration for VIm
 Plugin 'majutsushi/tagbar'        " Provide an outline base on ctags
 Plugin 'vim-scripts/autopreview'  " Autopreview functions' signature
 Plugin 'groenewege/vim-less'      " LESS css support
+Plugin 'godlygeek/tabular'        " Allow custom alignments (on '=' for example)
 Plugin 'webastien/vim-tabs'       " Display only filename + works with several file per tab
 Plugin 'webastien/vim-ctags'      " Ctags management
 Plugin 'webastien/vim-folding'    " Light module to manage folds
@@ -79,6 +80,11 @@ nnoremap <silent> <F7>  :cnext<CR>zv
 nnoremap <silent> <F2> :AutoPreviewToggle<CR>
 " As PIV plugin use ":setlocal nowrap", re-add this option on PHP files
 autocmd FileType php :setlocal wrap
+" Use plugin tabularize with '+' key with auto determination of parameters
+function TabAuto()
+  let l = getline('.') | let p = stridx(l, '=') | if p == -1 || p < stridx(l, ':') | exec "Tabularize /:\\zs/l0r1" | else | exec "Tabularize /=" | endif
+endfunction
+map <silent> + :call TabAuto()<CR>
 
 " ##  Keyboard (re)mapping  #### /!\ Remember: Never add comments on the same line as a map command! ################################################
 " Remap the "à" key to work as "0" on qwerty keyboards
