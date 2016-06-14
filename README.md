@@ -1,17 +1,20 @@
 # vim
-Simply my own config for the great editor VIm
+Simply my own config for the great editor [VIm](http://www.vim.org)
 
 ## About
 This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle) : A plugin manager with [GIT](http://git-scm.com) support. That's why I separate a few custom features in Github repositories.
 
-As I mainly use Mac computers, I had to compile [Exuberant Ctags](http://ctags.sourceforge.net) (the "ctags" command included in MacOS is not the same) and put the binary in **~/.vim/bin**. [Tagbar](http://majutsushi.github.com/tagbar/) and [vim-ctags](https://github.com/webastien/vim-ctags) need it and this custom path is defined in [vim-tweaks](https://github.com/webastien/vim-tweaks) with:
+As I mainly use Mac computers, I had to compile [Exuberant Ctags](http://ctags.sourceforge.net) (the "ctags" command included in MacOS is not the same) and put the binary in **~/.vim/bin** (used by [Tagbar](http://majutsushi.github.com/tagbar/) and [vim-ctags](https://github.com/webastien/vim-ctags)). This custom path is defined in the **.vimrc** if MacOS is the current system.
 
-    let g:tagbar_ctags_bin = '~/.vim/bin/ctags'
+## Requirements
+* [VIm](http://www.vim.org) obviously
+* [Exuberant ctags](http://ctags.sourceforge.net) to build things like outline
+* [Git](https://git-scm.com) used by **Vundle** to install / update plugins
 
 ## Install
-1. Copy **.vimrc** file and **.VIm** to your home directory
+1. Copy **.vimrc** file and **.vim** folder to your home directory
 2. Edit **.vimrc** to feet your needs
-3. Create the directory **.vim/swapfiles** (except if you remove this option)
+3. Install [Vundle](http://github.com/gmarik/vundle) (`` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim ``)
 4. Launch **VIm** (as usual)
 5. Execute **PluginInstall** command (cf **Vundle**'s plugin doc)
 6. Restart **VIm**
