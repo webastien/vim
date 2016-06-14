@@ -13,4 +13,6 @@ Plugin 'webastien/vim-ctags'      " Ctags management
 Plugin 'webastien/vim-folding'    " Light module to manage folds
 Plugin 'webastien/vim-tweaks'     " My custom tweaks
 call vundle#end() | filetype plugin indent on
+" MacOS's ctags is not 'Exuberant', so if this is the current OS use the custom bin instead
+if system('uname -s') == "Darwin\n" | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' | endif
 
