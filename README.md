@@ -26,6 +26,7 @@ As I mainly use Mac computers, I had to compile [Exuberant Ctags](http://ctags.s
 * [Tagbar](http://majutsushi.github.com/tagbar/) to have an outline
 * [Autopreview](https://github.com/vim-scripts/autopreview) to quickly see functions' signature
 * [vim-less](https://github.com/groenewege/vim-less) to have LESS files highlighting
+* [vim-twig](https://github.com/lumiliet/vim-twig) to have Twig files highlighting
 * [Tabular](https://github.com/godlygeek/tabular) for easy alignments (on '=' for example)
 * [vim-tabs](https://github.com/webastien/vim-tabs) to simplify tab names
 * [vim-ctags](https://github.com/webastien/vim-ctags) to manage and navigate tags

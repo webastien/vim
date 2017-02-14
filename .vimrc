@@ -6,6 +6,7 @@ Plugin 'spf13/PIV'                " PHP integration for VIm
 Plugin 'majutsushi/tagbar'        " Provide an outline base on ctags
 Plugin 'vim-scripts/autopreview'  " Autopreview functions' signature
 Plugin 'groenewege/vim-less'      " LESS css support
+Plugin 'lumiliet/vim-twig'        " Twig syntax hughlighting support
 Plugin 'godlygeek/tabular'        " Allow easy alignments (on '=' for example)
 Plugin 'nanotech/jellybeans.vim'  " Nice colorscheme
 Plugin 'webastien/vim-tabs'       " Display only filename + works with several file per tab
