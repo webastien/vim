@@ -8,6 +8,7 @@ Plugin 'vim-scripts/autopreview'  " Autopreview functions' signature
 Plugin 'groenewege/vim-less'      " LESS css support
 Plugin 'lumiliet/vim-twig'        " Twig syntax hughlighting support
 Plugin 'godlygeek/tabular'        " Allow easy alignments (on '=' for example)
+Plugin 'Townk/vim-autoclose'      " Auto close brackets, ...
 Plugin 'nanotech/jellybeans.vim'  " Nice colorscheme
 Plugin 'webastien/vim-tabs'       " Display only filename + works with several file per tab
 Plugin 'webastien/vim-ctags'      " Ctags management
