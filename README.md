@@ -57,6 +57,6 @@ Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`
 * [vim-folding](https://github.com/webastien/vim-folding) a light folding plugin
 * [vim-tweaks](https://github.com/webastien/vim-tweaks) which contains my keyboard mappings and a few custom features
 
-## Keyboard mapping
-My custom keyboard shortcuts are described on the [vim-tweaks README.md file](https://github.com/webastien/vim-tweaks/blob/master/README.md).
+## Shortcuts
+My custom keyboard mappings are described on the vim-tweaks [README.md](https://github.com/webastien/vim-tweaks/blob/master/README.md) file.
 
