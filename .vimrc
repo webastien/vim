@@ -15,20 +15,24 @@ Plugin 'webastien/vim-tabs'         " Display only filename + works with several
 Plugin 'webastien/vim-ctags'        " Ctags management
 Plugin 'webastien/vim-folding'      " Light module to manage folds
 Plugin 'webastien/vim-tweaks'       " My custom tweaks
+Plugin 'mattn/emmet-vim'            " Emmet style HTML abbreviations (MUST BE PLACED AFTER VIM-TWEAKS TO ALLOW REMAPPING)
 call vundle#end() | filetype plugin indent on
 
 " ##  Colorscheme configuration and hacks until colors override is not allowed @see https://github.com/NLKNguyen/papercolor-theme/issues/78  ########
-colors  PaperColor | set background=dark | let g:PaperColor_Theme_Options = { 'transparent_background': 1 }
-autocmd ColorScheme * hi! Folded       ctermbg=NONE ctermfg=22                   " Folded elements
-autocmd ColorScheme * hi! Visual       ctermbg=NONE ctermfg=NONE cterm=reverse   " Visual selection
-autocmd ColorScheme * hi! Todo         ctermbg=52   ctermfg=220  cterm=bold      " TODO markers
-autocmd ColorScheme * hi! Search       ctermbg=11   ctermfg=52   cterm=bold      " Currently researched terms
-autocmd ColorScheme * hi! StatusLine   ctermbg=46   ctermfg=16   cterm=bold      " Status line
-autocmd ColorScheme * hi! StatusLineNC ctermbg=8    ctermfg=16   cterm=NONE      " Status line (non current)
-autocmd ColorScheme * hi! TabLine      ctermbg=8    ctermfg=16   cterm=NONE      " Tabs bar
-autocmd ColorScheme * hi! TabLineFill  ctermbg=NONE ctermfg=NONE cterm=underline " The space around tabs
-autocmd ColorScheme * hi! TabLineSel   ctermbg=46   ctermfg=16   cterm=bold      " Current buffer tab bar
-autocmd FileType php :hi phpVarSelector ctermfg=66 | autocmd FileType php :hi phpIdentifier ctermfg=76 " PHP related
+if isdirectory(expand("~/.vim/bundle/papercolor-theme")) " To avoid error when Vundle's PluginInstall has not been performed
+  colors PaperColor | set background=dark | let g:PaperColor_Theme_Options = { 'transparent_background': 1 }
+  au ColorScheme * hi! Folded         ctermfg=22   ctermbg=NONE                 " Folded elements
+  au ColorScheme * hi! Visual         ctermfg=NONE ctermbg=NONE cterm=reverse   " Visual selection
+  au ColorScheme * hi! Todo           ctermfg=220  ctermbg=52   cterm=bold      " TODO markers
+  au ColorScheme * hi! Search         ctermfg=52   ctermbg=11   cterm=bold      " Currently researched terms
+  au ColorScheme * hi! StatusLine     ctermfg=16   ctermbg=46   cterm=bold      " Status line
+  au ColorScheme * hi! StatusLineNC   ctermfg=16   ctermbg=8    cterm=NONE      " Status line (non current)
+  au ColorScheme * hi! TabLine        ctermfg=16   ctermbg=8    cterm=NONE      " Tabs bar
+  au ColorScheme * hi! TabLineFill    ctermfg=NONE ctermbg=NONE cterm=underline " The space around tabs
+  au ColorScheme * hi! TabLineSel     ctermfg=16   ctermbg=46   cterm=bold      " Current buffer tab bar
+  au ColorScheme * hi! phpIdentifier  ctermfg=76                                " PHP variables name
+  au ColorScheme * hi! phpVarSelector ctermfg=66                                " PHP variables dollar symbol
+endif
 
 " ##  CTAGS BINARY SWITH DEPENDING ON OS: MacOS has one, but it's not 'Exuberant', so if this is the current OS use the custom bin instead ##########
 if system('uname -s') == "Darwin\n" | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' | endif
