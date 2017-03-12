@@ -20,7 +20,7 @@ call vundle#end() | filetype plugin indent on
 
 " ##  Colorscheme configuration and hacks until colors override is not allowed @see https://github.com/NLKNguyen/papercolor-theme/issues/78  ########
 if isdirectory(expand("~/.vim/bundle/papercolor-theme")) " To avoid error when Vundle's PluginInstall has not been performed
-  colors PaperColor | set background=dark | let g:PaperColor_Theme_Options = { 'transparent_background': 1 }
+  colors PaperColor | set background=dark | let g:PaperColor_Theme_Options = { 'theme': { 'default': { 'transparent_background': 1 } } }
   au ColorScheme * hi! Folded         ctermfg=22   ctermbg=NONE                 " Folded elements
   au ColorScheme * hi! Visual         ctermfg=NONE ctermbg=NONE cterm=reverse   " Visual selection
   au ColorScheme * hi! Todo           ctermfg=220  ctermbg=52   cterm=bold      " TODO markers
