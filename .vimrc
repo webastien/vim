@@ -5,6 +5,7 @@ Plugin 'scrooloose/nerdcommenter'   " Easily toggle comments
 Plugin 'shawncplus/phpcomplete.vim' " Better completion for PHP
 Plugin 'majutsushi/tagbar'          " Provide an outline based on ctags
 Plugin 'vim-scripts/autopreview'    " Autopreview functions' signature
+Plugin 'c9s/vimomni.vim'            " VimL files omnicompletion support
 Plugin 'groenewege/vim-less'        " LESS css support
 Plugin 'lumiliet/vim-twig'          " Twig syntax highlighting support
 Plugin 'stephpy/vim-yaml'           " Better syntax highlighting for YAML
@@ -33,7 +34,4 @@ if isdirectory(expand("~/.vim/bundle/papercolor-theme")) " To avoid error when V
   au ColorScheme * hi! phpIdentifier  ctermfg=76                                " PHP variables name
   au ColorScheme * hi! phpVarSelector ctermfg=66                                " PHP variables dollar symbol
 endif
-
-" ##  CTAGS BINARY SWITH DEPENDING ON OS: MacOS has one, but it's not 'Exuberant', so if this is the current OS use the custom bin instead ##########
-if system('uname -s') == "Darwin\n" | let g:tagbar_ctags_bin = '~/.vim/bin/ctags' | endif
 
