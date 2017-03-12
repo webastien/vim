@@ -32,6 +32,8 @@ I'm pretty sure all distributions provides a package for it. For example, on [De
 ## Update
 Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
 
+**Note:** If you use [vim-tweaks](https://github.com/webastien/vim-tweaks), you can use the command `:UpdateVimrc` to update the `.vimrc` file based on a configurable URL.
+
 ## Uninstall
 1. Remove both `.vimrc` file and `.vim` folder from your home directory
 2. (optional) Restore your `.vimrc` file and `.vim` folder to your home directory
@@ -44,11 +46,13 @@ Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`
 * [PHP Complete](https://github.com/shawncplus/phpcomplete.vim) for a better PHP support
 * [Tagbar](http://majutsushi.github.com/tagbar/) to have an outline
 * [Autopreview](https://github.com/vim-scripts/autopreview) to quickly see functions' signature
+* [Vim Omni Completion](https://github.com/c9s/vimomni.vim) VimL files omnicompletion support
 * [vim-less](https://github.com/groenewege/vim-less) to have LESS files highlighting
 * [vim-twig](https://github.com/lumiliet/vim-twig) to have Twig files highlighting
 * [vim-yaml](https://github.com/stephpy/vim-yaml) for a better syntax highlighting of YAML files
 * [Tabular](https://github.com/godlygeek/tabular) for easy alignments (on '=' for example)
 * [vim-autoclose](https://github.com/Townk/vim-autoclose) to automaticaly close brackets, ...
+* [Emmet-vim](https://github.com/mattn/emmet-vim) Emmet style HTML abbreviations
 * [PaperColor theme](https://github.com/NLKNguyen/papercolor-theme) a nice colorscheme which is (a bit) configurable and supposed to become more
 
 ### My own plugins
