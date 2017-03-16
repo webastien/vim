@@ -22,8 +22,10 @@ call vundle#end() | filetype plugin indent on
 " ##  Colorscheme configuration and hacks until colors override is not allowed @see https://github.com/NLKNguyen/papercolor-theme/issues/78  ########
 if isdirectory(expand("~/.vim/bundle/papercolor-theme")) " To avoid error when Vundle's PluginInstall has not been performed
   colors PaperColor | set background=dark | let g:PaperColor_Theme_Options = { 'theme': { 'default': { 'transparent_background': 1 } } }
+  au Colorscheme * hi! CursorLine     ctermfg=NONE ctermbg=17                   " Current line
+  au Colorscheme * hi! CursorLineNr   ctermfg=226  ctermbg=17   cterm=bold      " Current line, number side
   au Colorscheme * hi! NonText        ctermfg=0    ctermbg=NONE                 " Invisible characters
-  au ColorScheme * hi! Folded         ctermfg=58   ctermbg=233  cterm=underline " Folded elements
+  au ColorScheme * hi! Folded         ctermfg=NONE ctermbg=235                  " Folded elements
   au Colorscheme * hi! FoldColumn     ctermfg=14   ctermbg=NONE                 " Fold column (on the left of line numbers)
   au ColorScheme * hi! Visual         ctermfg=NONE ctermbg=NONE cterm=reverse   " Visual selection
   au ColorScheme * hi! Todo           ctermfg=220  ctermbg=52   cterm=bold      " TODO markers
@@ -35,5 +37,8 @@ if isdirectory(expand("~/.vim/bundle/papercolor-theme")) " To avoid error when V
   au ColorScheme * hi! TabLineSel     ctermfg=16   ctermbg=46   cterm=bold      " Current buffer tab bar
   au ColorScheme * hi! phpIdentifier  ctermfg=76                                " PHP variables name
   au ColorScheme * hi! phpVarSelector ctermfg=66                                " PHP variables dollar symbol
+  au ColorScheme * hi!                link         Error        Todo            " Use TODO colors for errors
+  au ColorScheme * hi!                link         SignColumn   FoldColumn      " Use FoldColumn colors for SignColumn
+  au ColorScheme * hi!                link         qfLineNr     Comment         " Use comments colors for qf cols and lines
 endif
 
