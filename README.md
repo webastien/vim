@@ -5,20 +5,8 @@ Simply my own config for the great editor [VIm](http://www.vim.org)
 This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle): A plugin manager with [GIT](http://git-scm.com) support. I've put my own plugins in several Github repositories to take advantage of it. The main, [VIm-tweaks](https://github.com/webastien/vim-tweaks), provides a few custom features and keyboard shortcuts to speed up development, especialy for PHP projects.
 
 ## Requirements
-* [VIm](http://www.vim.org) obviously (also works with MacOS pre-installed version, you don't have to install `vim` package with `brew` or `port`)
-* [Exuberant ctags](http://ctags.sourceforge.net) to build outline, jump to functions / classes definitions, ... (read the following note)
-* [Git](https://git-scm.com) used by **Vundle** to manage plugins
-
-### Exuberant ctags
-[Exuberant ctags](http://ctags.sourceforge.net) is a common dependency for developer's stuffs, you maybe already have it, if not:
-
-* **MacOS** (nothing to do)
-
-The `ctags` command already exists, but this is not "Exuberant ctags". You can use [brew](https://brew.sh/index_fr.html), [port](https://www.macports.org) or alternative ways to install, but this is not required: I've compiled it in the `.vim/bin` directory, and add a line in **.vimrc** which detect you're on Mac and tell to [Tagbar](http://majutsushi.github.com/tagbar/) and [vim-ctags](https://github.com/webastien/vim-ctags) to use this binary instead of the one in your environment path.
-
-* **Linux** (easy, depending on your distrib)
-
-I'm pretty sure all distributions provides a package for it. For example, on [Debian](https://www.debian.org) and derivates ([Ubuntu](https://www.ubuntu.com), [Linux Mint](https://www.linuxmint.com), ...) `sudo apt install ctags` is enought. Otherwise, download it from http://ctags.sourceforge.net.
+* [VIm](http://www.vim.org), From Linux packages, Mac pre-installed version, `brew` or `port`, ...
+* [Git](https://git-scm.com) used by **Vundle** to install / update plugins
 
 ## Install
 1. (optional) Backup your `.vimrc` file and `.vim` folder if you already have a customised configuration
@@ -32,7 +20,7 @@ I'm pretty sure all distributions provides a package for it. For example, on [De
 ## Update
 Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
 
-**Note:** If you use [vim-tweaks](https://github.com/webastien/vim-tweaks), you can use the command `:UpdateVimrc` to update the `.vimrc` file based on a configurable URL.
+**Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, based on a configurable URL.
 
 ## Uninstall
 1. Remove both `.vimrc` file and `.vim` folder from your home directory
@@ -63,4 +51,3 @@ Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`
 
 ## Shortcuts
 My custom keyboard mappings are described on the vim-tweaks [README.md](https://github.com/webastien/vim-tweaks/blob/master/README.md) file.
-
