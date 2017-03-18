@@ -9,23 +9,62 @@ This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmar
 * [Git](https://git-scm.com) used by **Vundle** to install / update plugins
 
 ## Install
-1. (optional) Backup your `.vimrc` file and `.vim` folder if you already have a customised configuration
+Before to install, backup your VIm configuration if any (in your home folder: `.vimrc` file and `.vim` folder).
+
+### Manual installation steps
+1. Clone **recursively** this repository (recurse if to automaticaly get Vundle repository cloned too)
 2. Copy both `.vimrc` file and `.vim` folder to your home directory
 3. (optional) Edit `.vimrc` to feet your needs
-4. Install [Vundle](http://github.com/gmarik/vundle) (`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`)
-5. Launch VIm as usual (errors could be displayed, ignore them for now: Plugins are not yet installed)
-6. Execute `:PluginInstall` (cf **Vundle**'s plugin doc)
-7. Restart VIm and enjoy
+4. Launch VIm as usual (errors could be displayed, ignore them for now: Plugins are not yet installed)
+5. Execute `:PluginInstall` (cf **Vundle**'s plugin doc)
+6. Restart VIm and enjoy
+
+#### Alternative for user not familiar with git clone
+Replace the first two steps with:
+1. [Download this repository](https://github.com/webastien/vim/archive/master.zip) from Github
+2. [Download Vundle repository](https://github.com/VundleVim/Vundle.vim/archive/master.zip) from Github
+3. Extract them somewhere (`download` folder for example)
+4. Copy `download`/webastien-vim/.vimrc in your home (`/home/your-name/.vimrc`)
+5. Copy `download`/webastien-vim/.vim in your home (`/home/your-name/.vim`)
+6. Copy `download`/Vundle.vim into your vim configuration (`/home/your-name/.vim/bundle/Vundle.vim`)
+
+### Install with command line
+```
+# Clone the repository (into "/tmp/webastien-vim" directory)
+git clone --recursive https://github.com/webastien/vim.git /tmp/webastien-vim
+# Copy .vimrc file and .vim folder in your home folder
+cp /tmp/webastien-vim/.vimrc ~/.vimrc && rm -fr ~/.vim && cp -r /tmp/webastien-vim/.vim ~/.vim
+# Install plugins using Vundle
+vim -E -s -c "source ~/.vimrc" -c "PluginInstall" -c "qa!"
+```
+
+#### If you forgot the recursive option when cloning
+The plugin install step will fail and VIm will certainly gives you errors on startup... Install manualy Vundle to fix it:
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+Then, re-execute the plugin install.
 
 ## Update
 Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
 
 **Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, based on a configurable URL.
 
+### Update with command line
+The following command will read your `.vimrc`, remove all un-necessary plugins, install the new ones and finaly update all plugins:
+```
+vim -E -s -c "source ~/.vimrc" -c "PluginClean" -c "PluginInstall" -c "PluginUpdate" -c "qa!"
+```
+
 ## Uninstall
 1. Remove both `.vimrc` file and `.vim` folder from your home directory
 2. (optional) Restore your `.vimrc` file and `.vim` folder to your home directory
 3. (optional) Uninstall `ctags` if you have installed for it and no more need it
+
+### Uninstall with command line
+```
+rm ~/.vimrc && rm -fr ~/.vim
+```
 
 ## Plugins used
 * [Vundle](http://github.com/gmarik/vundle) to manage plugins (one plugin to rule them all)
