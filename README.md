@@ -2,10 +2,10 @@
 Simply my own config for the great editor [VIm](http://www.vim.org)
 
 ## About
-This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle): A plugin manager with [GIT](http://git-scm.com) support. I've put my own plugins in several Github repositories to take advantage of it. The main, [VIm-tweaks](https://github.com/webastien/vim-tweaks), provides a few custom features and keyboard shortcuts to speed up development, especialy for PHP projects.
+This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle): A plugin manager with [GIT](http://git-scm.com) support. I've put my own plugins in several Github repositories to take advantage of it. The main, [VIm-tweaks](https://github.com/webastien/vim-tweaks), contains my configuration options and provides a few custom features / keyboard shortcuts to speed up development, especialy for PHP projects.
 
 ## Requirements
-* [VIm](http://www.vim.org), From Linux packages, Mac pre-installed version, `brew` or `port`, ...
+* [VIm](http://www.vim.org), from Linux packages, Mac pre-installed version, `brew` or `port`, ...
 * [Git](https://git-scm.com) used by **Vundle** to install / update plugins
 
 ## Install
@@ -14,18 +14,17 @@ This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmar
 3. (optional) Edit `.vimrc` to feet your needs
 4. Install [Vundle](http://github.com/gmarik/vundle) (`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`)
 5. Launch VIm as usual (errors could be displayed, ignore them for now: Plugins are not yet installed)
-6. Execute `:PluginInstall` (cf **Vundle**'s plugin doc)
+6. Execute `:PluginInstall` (cf [Vundle quickstart](https://github.com/VundleVim/Vundle.vim#quick-start))
 7. Restart VIm and enjoy
 
 ## Update
-Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
+Follow the [Vundle methods](https://github.com/VundleVim/Vundle.vim/blob/master/doc/vundle.txt#L234): Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
 
-**Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, based on a configurable URL.
+**Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, [based on a configurable URL](https://github.com/webastien/vim-tweaks#prefilled-url-for-command-updatevimrc), by default, mine.
 
 ## Uninstall
 1. Remove both `.vimrc` file and `.vim` folder from your home directory
 2. (optional) Restore your `.vimrc` file and `.vim` folder to your home directory
-3. (optional) Uninstall `ctags` if you have installed for it and no more need it
 
 ## Plugins used
 * [Vundle](http://github.com/gmarik/vundle) to manage plugins (one plugin to rule them all)
