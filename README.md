@@ -2,10 +2,10 @@
 Simply my own config for the great editor [VIm](http://www.vim.org)
 
 ## About
-This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle): A plugin manager with [GIT](http://git-scm.com) support. I've put my own plugins in several Github repositories to take advantage of it. The main, [VIm-tweaks](https://github.com/webastien/vim-tweaks), provides a few custom features and keyboard shortcuts to speed up development, especialy for PHP projects.
+This [VIm](http://www.vim.org) configuration use [Vundle](http://github.com/gmarik/vundle): A plugin manager with [GIT](http://git-scm.com) support. I've put my own plugins in several Github repositories to take advantage of it. The main, [VIm-tweaks](https://github.com/webastien/vim-tweaks), contains my configuration options and provides a few custom features / keyboard shortcuts to speed up development, especialy for PHP projects.
 
 ## Requirements
-* [VIm](http://www.vim.org), From Linux packages, Mac pre-installed version, `brew` or `port`, ...
+* [VIm](http://www.vim.org), from Linux packages, Mac pre-installed version, `brew` or `port`, ...
 * [Git](https://git-scm.com) used by **Vundle** to install / update plugins
 
 ## Install
@@ -46,9 +46,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Then, re-execute the plugin install.
 
 ## Update
-Follow the [Vundle](http://github.com/gmarik/vundle) way: Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
+Follow the [Vundle methods](https://github.com/VundleVim/Vundle.vim/blob/master/doc/vundle.txt#L234): Use `:PluginInstall`/`:PluginUpdate` and/or `:PluginClean` commands. **Keep in mind the `.vimrc` file is not automaticaly updated**, but this is expected because it contains YOUR settings, plugins list, etc. If you want to stricly use mine, you have to manually update it when I publish a modified version.
 
-**Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, based on a configurable URL.
+**Note:** [vim-tweaks](https://github.com/webastien/vim-tweaks) plugin provides the command `:UpdateVimrc` to update the `.vimrc` file, [based on a configurable URL](https://github.com/webastien/vim-tweaks#prefilled-url-for-command-updatevimrc), by default, mine.
 
 ### Update with command line
 The following command will read your `.vimrc`, remove all un-necessary plugins, install the new ones and finaly update all plugins:
@@ -59,7 +59,6 @@ vim -E -s -c "source ~/.vimrc" -c "PluginClean" -c "PluginInstall" -c "PluginUpd
 ## Uninstall
 1. Remove both `.vimrc` file and `.vim` folder from your home directory
 2. (optional) Restore your `.vimrc` file and `.vim` folder to your home directory
-3. (optional) Uninstall `ctags` if you have installed for it and no more need it
 
 ### Uninstall with command line
 ```
